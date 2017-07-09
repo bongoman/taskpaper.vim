@@ -139,11 +139,11 @@ To change the default archive project name, define the
 
     let g:task_paper_archive_project = "Archive"
 
-By default, when you move a task, the cursor will follow that task to its new
-location.  To make the cursor stay in it's current location, change the
+By default, when you move a task, the cursor will not follow that task to its new
+location.  To make the cursor move to the new location, change the
 `task_paper_follow_move` variable.
 
-    let g:task_paper_follow_move = 0
+    let g:task_paper_follow_move = 1
 
 If you want to hide done tasks when searching you can change the
 `task_paper_search_hide_done` variable.

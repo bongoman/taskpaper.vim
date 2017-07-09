@@ -558,4 +558,21 @@ function! taskpaper#tag_style_dict(tsd)
     endfor
 endfunction
 
+function! taskpaper#DoneRecursive()
+	let origLine = line('.')
+	let curLine = line('.')
+	let origIndent = indent('.')
+	let curIndent = origIndent + 1
+	while curIndent > origIndent
+		if !taskpaper#has_tag('done')
+	    	        call taskpaper#toggle_tag('done', taskpaper#date())
+		endif
+		execute "normal! " curLine . "gg"
+		normal j
+		let curLine = line('.')
+		let curIndent = indent('.')
+	endwhile
+	execute "normal! " origLine . "gg"
+endfunction
+
 let &cpo = s:save_cpo

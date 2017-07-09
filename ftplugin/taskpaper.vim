@@ -25,7 +25,7 @@ endif
 " When moving a task, should the cursor follow or stay in the same place
 " (default: follow)
 if !exists('g:task_paper_follow_move')
-    let g:task_paper_follow_move = 1 
+    let g:task_paper_follow_move = 0 
 endif
 
 " Hide @done tasks when searching tags
@@ -69,16 +69,24 @@ if !exists("no_plugin_maps") && !exists("no_taskpaper_maps")
 
     nnoremap <silent> <buffer> <Plug>TaskPaperArchiveDone
     \       :<C-u>call taskpaper#archive_done()<CR>
+    nnoremap <silent> <buffer> <Plug>TaskPaperShowDone
+    \       :<C-u>call taskpaper#search_tag('done')<CR>
     nnoremap <silent> <buffer> <Plug>TaskPaperShowToday
     \       :<C-u>call taskpaper#search_tag('today')<CR>
+    nnoremap <silent> <buffer> <Plug>TaskPaperShowWaiting
+    \       :<C-u>call taskpaper#search_tag('waiting')<CR>
     nnoremap <silent> <buffer> <Plug>TaskPaperShowCancelled
     \       :<C-u>call taskpaper#search_tag('cancelled')<CR>
     nnoremap <silent> <buffer> <Plug>TaskPaperToggleCancelled
     \       :call taskpaper#toggle_tag('cancelled', taskpaper#date())<CR>
     nnoremap <silent> <buffer> <Plug>TaskPaperToggleDone
     \       :call taskpaper#toggle_tag('done', taskpaper#date())<CR>
+    nnoremap <silent> <buffer> <Plug>TaskPaperDoneRecursive
+    \       :call taskpaper#DoneRecursive()<CR>
     nnoremap <silent> <buffer> <Plug>TaskPaperToggleToday
     \       :call taskpaper#toggle_tag('today', '')<CR>
+    nnoremap <silent> <buffer> <Plug>TaskPaperToggleWaiting
+    \       :call taskpaper#toggle_tag('waiting', '')<CR>
     nnoremap <silent> <buffer> <Plug>TaskPaperMoveToProject
     \       :call taskpaper#move_to_project()<CR>
 
@@ -98,11 +106,15 @@ if !exists("no_plugin_maps") && !exists("no_taskpaper_maps")
     nmap <buffer> <Leader>tj <Plug>TaskPaperNextProject
     nmap <buffer> <Leader>tk <Plug>TaskPaperPreviousProject
 
-    nmap <buffer> <Leader>tD <Plug>TaskPaperArchiveDone
+    nmap <buffer> <Leader>ta <Plug>TaskPaperArchiveDone
+    nmap <buffer> <Leader>tD <Plug>TaskPaperShowDone
     nmap <buffer> <Leader>tT <Plug>TaskPaperShowToday
+    nmap <buffer> <Leader>tW <Plug>TaskPaperShowWaiting
     nmap <buffer> <Leader>tX <Plug>TaskPaperShowCancelled
     nmap <buffer> <Leader>td <Plug>TaskPaperToggleDone
+    nmap <buffer> <Leader>tc <Plug>TaskPaperDoneRecursive
     nmap <buffer> <Leader>tt <Plug>TaskPaperToggleToday
+    nmap <buffer> <Leader>tw <Plug>TaskPaperToggleWaiting
     nmap <buffer> <Leader>tx <Plug>TaskPaperToggleCancelled
     nmap <buffer> <Leader>tm <Plug>TaskPaperMoveToProject
 
