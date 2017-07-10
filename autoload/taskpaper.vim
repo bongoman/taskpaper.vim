@@ -563,15 +563,25 @@ function! taskpaper#DoneRecursive()
 	let curLine = line('.')
 	let origIndent = indent('.')
 	let curIndent = origIndent + 1
-	while curIndent > origIndent
-		if !taskpaper#has_tag('done')
-	    	        call taskpaper#toggle_tag('done', taskpaper#date())
-		endif
+	if taskpaper#has_tag('done')
+		call taskpaper#toggle_tag('done', taskpaper#date())
+	else
+		while curIndent > origIndent
+			if !taskpaper#has_tag('done')
+	    	        	call taskpaper#toggle_tag('done', taskpaper#date())
+				if taskpaper#has_tag('waiting')
+					call taskpaper#toggle_tag('waiting', '')
+				endif
+				if taskpaper#has_tag('today')
+					call taskpaper#toggle_tag('today', '')
+				endif
+			endif
 		execute "normal! " curLine . "gg"
 		normal j
 		let curLine = line('.')
 		let curIndent = indent('.')
 	endwhile
+	endif
 	execute "normal! " origLine . "gg"
 endfunction
 

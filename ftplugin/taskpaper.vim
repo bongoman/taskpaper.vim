@@ -80,8 +80,6 @@ if !exists("no_plugin_maps") && !exists("no_taskpaper_maps")
     nnoremap <silent> <buffer> <Plug>TaskPaperToggleCancelled
     \       :call taskpaper#toggle_tag('cancelled', taskpaper#date())<CR>
     nnoremap <silent> <buffer> <Plug>TaskPaperToggleDone
-    \       :call taskpaper#toggle_tag('done', taskpaper#date())<CR>
-    nnoremap <silent> <buffer> <Plug>TaskPaperDoneRecursive
     \       :call taskpaper#DoneRecursive()<CR>
     nnoremap <silent> <buffer> <Plug>TaskPaperToggleToday
     \       :call taskpaper#toggle_tag('today', '')<CR>
@@ -112,7 +110,6 @@ if !exists("no_plugin_maps") && !exists("no_taskpaper_maps")
     nmap <buffer> <Leader>tW <Plug>TaskPaperShowWaiting
     nmap <buffer> <Leader>tX <Plug>TaskPaperShowCancelled
     nmap <buffer> <Leader>td <Plug>TaskPaperToggleDone
-    nmap <buffer> <Leader>tc <Plug>TaskPaperDoneRecursive
     nmap <buffer> <Leader>tt <Plug>TaskPaperToggleToday
     nmap <buffer> <Leader>tw <Plug>TaskPaperToggleWaiting
     nmap <buffer> <Leader>tx <Plug>TaskPaperToggleCancelled

@@ -77,12 +77,13 @@ commands (e.g. Ctrl-X Ctrl-N).
 The plugin defines some new mappings:
 
     \td     Mark task as done
-    \tc     Mark task and subtasks as done recursively
     \tx     Mark task as cancelled
     \tt     Mark task as today
-    \tD     Show @done items
+    \tw     Mark task as waiting
+    \tD     show tasks marked as done
     \tX     Show tasks marked as cancelled
     \tT     Show tasks marked as today
+    \tW     Show tasks marked as waiting
     \ta     Archive @done items
     \t/     Search for items including keyword
     \ts     Search for items including tag
